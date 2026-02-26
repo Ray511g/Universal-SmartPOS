@@ -15,7 +15,8 @@ import {
   Mail,
   Phone,
   CheckCircle2,
-  XCircle
+  XCircle,
+  Settings
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -164,6 +165,3 @@ export default function StaffPage() {
     </div>
   );
 }
-
-// Fixed import for Settings icon
-import { Settings } from 'lucide-react';

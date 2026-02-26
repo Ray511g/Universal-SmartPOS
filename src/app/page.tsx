@@ -10,7 +10,9 @@ import {
   ArrowUpRight,
   ChevronRight,
   Store,
-  Calendar
+  Calendar,
+  Settings,
+  BarChart3
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useBusinessStore } from '@/store/businessStore';
@@ -122,6 +124,3 @@ export default function Dashboard() {
     </div>
   );
 }
-
-// Re-importing icon locally for the button map
-import { BarChart3, Settings as SettingsIcon } from 'lucide-react';
