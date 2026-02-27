@@ -1,12 +1,6 @@
-@import "tailwindcss";
-
-@theme {
-  --color-navy-950: #020617;
-  --color-navy-900: #0f172a;
-  --color-navy-800: #1e293b;
-  --color-brand-blue: #3b82f6;
-  --color-sapphire: #1d4ed8;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #f8fafc;
