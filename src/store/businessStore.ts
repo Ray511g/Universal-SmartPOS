@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type BusinessType = 'RETAIL' | 'PHARMACY' | 'RESTAURANT' | 'HARDWARE' | 'SERVICE';
+export type BusinessType = 'LIQUOR_STORE' | 'RETAIL' | 'PHARMACY' | 'RESTAURANT' | 'HARDWARE';
 
 export interface BusinessModule {
   id: string;
@@ -24,25 +24,25 @@ interface BusinessState {
 }
 
 const defaultModules: BusinessModule[] = [
-  { id: 'inventory', name: 'Inventory Management', enabled: true, requiredFor: ['RETAIL', 'PHARMACY', 'HARDWARE'] },
-  { id: 'prescriptions', name: 'Prescription Tracking', enabled: false, requiredFor: ['PHARMACY'] },
-  { id: 'tables', name: 'Table Management', enabled: false, requiredFor: ['RESTAURANT'] },
-  { id: 'analytics', name: 'Advanced Analytics', enabled: true, requiredFor: [] },
-  { id: 'barcode', name: 'Barcode Scanning', enabled: true, requiredFor: ['RETAIL', 'SUPERMARKET' as any] },
+  { id: 'inventory', name: 'Smart Inventory', enabled: true, requiredFor: ['LIQUOR_STORE', 'RETAIL'] },
+  { id: 'empties', name: 'Empties & Crates', enabled: true, requiredFor: ['LIQUOR_STORE'] },
+  { id: 'etims', name: 'KRA eTIMS Sync', enabled: true, requiredFor: ['LIQUOR_STORE'] },
+  { id: 'mpesa', name: 'M-Pesa Reconciliation', enabled: true, requiredFor: ['LIQUOR_STORE'] },
+  { id: 'analytics', name: 'Margin Analysis', enabled: true, requiredFor: [] },
+  { id: 'staff', name: 'Shift Management', enabled: true, requiredFor: [] },
 ];
 
 export const useBusinessStore = create<BusinessState>()(
   persist(
     (set) => ({
-      businessName: 'Universal Enterprise',
-      businessType: 'RETAIL',
+      businessName: 'Kenya Liquor Master',
+      businessType: 'LIQUOR_STORE',
       currency: 'KES',
       taxRate: 16,
       modules: defaultModules,
 
       setBusinessType: (type) => set((state) => ({
         businessType: type,
-        // Auto-enable required modules for the business type
         modules: state.modules.map(m => ({
           ...m,
           enabled: m.requiredFor.includes(type) || m.enabled
